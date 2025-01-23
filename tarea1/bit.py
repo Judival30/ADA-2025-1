@@ -11,7 +11,7 @@ tab = [["" for j in range(202)] for i in range(202)]
 
 def dfsBtoD(i1, i2, j1, j2):
     global ans  
-    if not (i1 > i2 or j1 > j2) and i1 <= n and i2 <= n and j1 <= m and j2 <= m:
+    if not (i1 > i2 or j1 > j2) and i1 < n and i2 < n and j1 < m and j2 < m:
         flag = True
         i = i1
         act = tab[i1][j1]
@@ -67,19 +67,21 @@ def main():
         n = int(n)
         m = int(m)
 
-        bitm = stdin.readline().strip()
-        
+        bitm = ""
         if fort == "B":
+            ans = ""
             while len(bitm) < n * m:
                 line = stdin.readline().strip()
                 bitm += line
+            
             print("D%4d%4d" % (n, m))
             id = 0
-            for i in range(1, n + 1):
-                for j in range(1, m + 1):
+            for i in range(n):
+                for j in range(m):
                     tab[i][j] = bitm[id]
                     id += 1
-            dfsBtoD(1, n, 1, m)
+            id = 0
+            dfsBtoD(0, n - 1, 0, m - 1)
             cont = 0
             for i in range(len(ans)):
                 if cont == 50:
@@ -88,10 +90,9 @@ def main():
                 cont += 1
                 print(ans[i], end="")
             print()
-                
-                
-            
+    
         else:
+            bitm = stdin.readline().strip()
             print("B%4d%4d" % (n, m))
             id = 0
     
