@@ -5,7 +5,7 @@ def binS(stores, m, l, r):
     if l >= r:
         ans =  l
     else:
-        mid = l + (r - 1) >> 1
+        mid = (l + r) // 2
         if m < stores[mid]:
             ans = binS(stores, m, l, mid)
         else:

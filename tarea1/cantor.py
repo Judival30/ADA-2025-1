@@ -1,6 +1,6 @@
 from sys import stdin
 
-lim = 1e-10
+lim = 1e-14
 
 
 def solve(x, l, r):
