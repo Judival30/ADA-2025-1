@@ -97,7 +97,7 @@ int solve(int n, vector<vector<pair<int, int>>> &lines, vector<pair<int, int>> &
 {
     int ans, si, sj, di, dj;
     ans = INT_MAX;
-    for (vector<pair<int, int>> &line : lines)
+    for (int k = 0; k < lines.size() && ans != 0; k++)
     {
         vector<vector<int>> matCost(n, vector<int>(n));
         for (int i = 0; i < n; ++i)
@@ -106,8 +106,8 @@ int solve(int n, vector<vector<pair<int, int>>> &lines, vector<pair<int, int>> &
             sj = pos[i].second;
             for (int j = 0; j < n; ++j)
             {
-                di = line[j].first;
-                dj = line[j].second;
+                di = lines[k][j].first;
+                dj = lines[k][j].second;
                 matCost[i][j] = abs(si - di) + abs(sj - dj);
             }
         }
